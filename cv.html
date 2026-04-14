@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV - Angela Li</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .cv-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+            background-color: var(--white);
+            line-height: 1.8;
+        }
+
+        .cv-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--primary-color);
+        }
+
+        .cv-name {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .cv-title {
+            font-size: 1.3rem;
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .cv-contact {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            font-size: 0.9rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .cv-contact a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .cv-contact a:hover {
+            text-decoration: underline;
+        }
+
+        .cv-section {
+            margin-bottom: 2rem;
+        }
+
+        .cv-section-title {
+            font-size: 1.4rem;
+            color: var(--primary-color);
+            border-left: 4px solid var(--secondary-color);
+            padding-left: 1rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .cv-entry {
+            margin-bottom: 1.5rem;
+        }
+
+        .cv-entry-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--dark-color);
+        }
+
+        .cv-entry-subtitle {
+            font-size: 0.95rem;
+            color: var(--secondary-color);
+            font-weight: 500;
+            margin-top: 0.3rem;
+        }
+
+        .cv-entry-description {
+            color: var(--text-color);
+            margin-top: 0.5rem;
+            line-height: 1.6;
+        }
+
+        .cv-skills {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .cv-skill-group {
+            background-color: var(--light-color);
+            padding: 1rem;
+            border-radius: 8px;
+        }
+
+        .cv-skill-group h4 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .cv-skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+        }
+
+        .cv-skill-tag {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 0.3rem 0.7rem;
+            border-radius: 15px;
+            font-size: 0.85rem;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            padding: 0.8rem 1.5rem;
+            background-color: var(--primary-color);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+
+        .cv-download {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .download-btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(99, 102, 241, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .cv-name {
+                font-size: 1.8rem;
+            }
+
+            .cv-contact {
+                gap: 1rem;
+                font-size: 0.85rem;
+            }
+
+            .cv-skills {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <h1>AM</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="index.html#about" class="nav-link">About</a></li>
+                <li><a href="index.html#expertise" class="nav-link">Expertise</a></li>
+                <li><a href="index.html#projects" class="nav-link">Projects</a></li>
+                <li><a href="index.html#hobbies" class="nav-link">Hobbies</a></li>
+                <li><a href="cv.html" class="nav-link active">CV</a></li>
+                <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <section class="cv-section" style="padding-top: 8rem; padding-bottom: 3rem;">
+        <div class="cv-container">
+            <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Back to Home</a>
+
+            <div class="cv-header">
+                <div class="cv-name" id="cv-name">Angela Li</div>
+                <div class="cv-title" id="cv-title">Security Architect | CISM Certified</div>
+                <div class="cv-contact">
+                    <span><i class="fas fa-phone"></i> +47 90016768</span>
+                    <span><a href="mailto:yan.li.norge@gmail.com"><i class="fas fa-envelope"></i> yan.li.norge@gmail.com</a></span>
+                    <span><i class="fas fa-map-marker-alt"></i> Oslo, Norway</span>
+                    <span><a href="https://linkedin.com/in/angelayanli"><i class="fab fa-linkedin"></i> LinkedIn</a></span>
+                </div>
+            </div>
+
+            <div id="cv-content" class="cv-content">
+                <p style="text-align: center; color: var(--text-color);">Loading CV content...</p>
+            </div>
+
+            <div class="cv-download" style="margin-top: 3rem; border-top: 2px solid var(--primary-color); padding-top: 2rem;">
+                <a href="CV.pdf" download class="download-btn">
+                    <i class="fas fa-download"></i> Download Full CV (PDF)
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Load CV content from JSON
+        async function loadCVContent() {
+            try {
+                const response = await fetch('cv_data.json');
+                const data = await response.json();
+                const content = data.content;
+
+                // Parse and format the CV content
+                const cvContent = document.getElementById('cv-content');
+                const lines = content.split('\n').filter(line => line.trim());
+
+                let html = '';
+                let currentSection = '';
+
+                const sections = {
+                    'Summary': ['Summary', 'SUMMARY'],
+                    'Top Skills': ['Top Skills', 'SKILLS', 'Skills'],
+                    'Experience': ['Experience', 'EXPERIENCE', 'Professional Experience'],
+                    'Education': ['Education', 'EDUCATION'],
+                    'Certifications': ['Certifications', 'CERTIFICATIONS', 'Certification'],
+                    'Languages': ['Languages', 'LANGUAGES'],
+                };
+
+                for (let i = 0; i < lines.length; i++) {
+                    const line = lines[i].trim();
+
+                    // Check if this is a section header
+                    let isSection = false;
+                    for (const [sectionName, keywords] of Object.entries(sections)) {
+                        if (keywords.some(kw => line.includes(kw))) {
+                            currentSection = sectionName;
+                            html += `<div class="cv-section">
+                                    <div class="cv-section-title"><i class="fas fa-chevron-right"></i> ${sectionName}</div>
+                                    <div class="cv-section-content">`;
+                            isSection = true;
+                            break;
+                        }
+                    }
+
+                    if (isSection) continue;
+
+                    // Add content to sections
+                    if (currentSection && line && !line.startsWith('Certified') && !line.startsWith('www.')) {
+                        if (line.match(/^\d{4}|^[A-Z]/)) {
+                            html += `<div class="cv-entry">
+                                    <div class="cv-entry-title">${line}</div>`;
+                        } else if (line.match(/[A-Z][A-Z]|Manager|Architect|Engineer|Developer/)) {
+                            html += `<div class="cv-entry-subtitle">${line}</div>`;
+                        } else {
+                            html += `<div class="cv-entry-description">${line}</div>
+                                    </div>`;
+                        }
+                    }
+                }
+
+                html += '</div></div>';
+                cvContent.innerHTML = html || '<p>CV content loaded. Please view the full PDF for complete details.</p>';
+            } catch (error) {
+                console.error('Error loading CV:', error);
+                document.getElementById('cv-content').innerHTML = `
+                    <div style="text-align: center; padding: 2rem;">
+                        <p style="color: var(--text-color);">CV content not available. Please <a href="CV.pdf" download style="color: var(--primary-color); font-weight: 600;">download the PDF</a> to view the full CV.</p>
+                    </div>
+                `;
+            }
+        }
+
+        // Load CV when page loads
+        document.addEventListener('DOMContentLoaded', loadCVContent);
+
+        // Mobile menu toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+
+        if (hamburger) {
+            hamburger.addEventListener('click', () => {
+                navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
+            });
+        }
+    </script>
+</body>
+</html>
