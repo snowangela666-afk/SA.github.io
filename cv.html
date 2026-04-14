@@ -3,173 +3,239 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CV - Angela Li</title>
+    <title>CV – Angela Li | Security Architect, CISM</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        .cv-container {
-            max-width: 900px;
+        /* ── Page layout ────────────────────────────────────── */
+        .cv-page {
+            padding-top: 8rem;
+            padding-bottom: 4rem;
+            background: #f8f7ff;
+            min-height: 100vh;
+        }
+        .cv-wrap {
+            max-width: 860px;
             margin: 0 auto;
-            padding: 2rem;
-            background-color: var(--white);
-            line-height: 1.8;
+            padding: 0 1.5rem;
         }
 
-        .cv-header {
-            text-align: center;
-            margin-bottom: 2rem;
-            padding-bottom: 1rem;
-            border-bottom: 2px solid var(--primary-color);
-        }
-
-        .cv-name {
-            font-size: 2.5rem;
-            color: var(--primary-color);
-            margin-bottom: 0.5rem;
-        }
-
-        .cv-title {
-            font-size: 1.3rem;
-            color: var(--secondary-color);
-            margin-bottom: 0.5rem;
-        }
-
-        .cv-contact {
+        /* ── Top action bar ─────────────────────────────────── */
+        .cv-actions {
             display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            font-size: 0.9rem;
-            flex-wrap: wrap;
-            margin-top: 1rem;
-        }
-
-        .cv-contact a {
-            color: var(--primary-color);
-            text-decoration: none;
-        }
-
-        .cv-contact a:hover {
-            text-decoration: underline;
-        }
-
-        .cv-section {
+            justify-content: space-between;
+            align-items: center;
             margin-bottom: 2rem;
-        }
-
-        .cv-section-title {
-            font-size: 1.4rem;
-            color: var(--primary-color);
-            border-left: 4px solid var(--secondary-color);
-            padding-left: 1rem;
-            margin-bottom: 1rem;
-            font-weight: 700;
-        }
-
-        .cv-entry {
-            margin-bottom: 1.5rem;
-        }
-
-        .cv-entry-title {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--dark-color);
-        }
-
-        .cv-entry-subtitle {
-            font-size: 0.95rem;
-            color: var(--secondary-color);
-            font-weight: 500;
-            margin-top: 0.3rem;
-        }
-
-        .cv-entry-description {
-            color: var(--text-color);
-            margin-top: 0.5rem;
-            line-height: 1.6;
-        }
-
-        .cv-skills {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            flex-wrap: wrap;
             gap: 1rem;
         }
+        .cv-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.6rem 1.2rem;
+            background: var(--primary-color);
+            color: #fff;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: background 0.2s, transform 0.2s;
+        }
+        .cv-back:hover { background: var(--secondary-color); transform: translateY(-2px); }
+        .cv-dl {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.6rem 1.4rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: #fff;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .cv-dl:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(99,102,241,0.35); }
 
-        .cv-skill-group {
-            background-color: var(--light-color);
-            padding: 1rem;
-            border-radius: 8px;
+        /* ── Card container ─────────────────────────────────── */
+        .cv-card {
+            background: #fff;
+            border-radius: 14px;
+            box-shadow: 0 4px 24px rgba(99,102,241,0.10);
+            overflow: hidden;
         }
 
-        .cv-skill-group h4 {
-            color: var(--primary-color);
-            margin-bottom: 0.5rem;
-            font-size: 0.95rem;
+        /* ── Header banner ──────────────────────────────────── */
+        .cv-header {
+            background: linear-gradient(135deg, #1e1b4b 0%, #4f46e5 60%, #ec4899 100%);
+            color: #fff;
+            padding: 2.5rem 2.5rem 2rem;
         }
-
-        .cv-skill-tags {
+        .cv-header-name {
+            font-size: 2.2rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            margin-bottom: 0.3rem;
+        }
+        .cv-header-title {
+            font-size: 1.1rem;
+            opacity: 0.88;
+            font-weight: 500;
+            margin-bottom: 1.2rem;
+        }
+        .cv-header-contacts {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.4rem;
+            gap: 1rem 2rem;
+            font-size: 0.88rem;
+        }
+        .cv-header-contacts a { color: #c7d2fe; text-decoration: none; }
+        .cv-header-contacts a:hover { color: #fff; }
+        .cv-header-contacts span { display: flex; align-items: center; gap: 0.4rem; opacity: 0.9; }
+
+        /* ── Body ───────────────────────────────────────────── */
+        .cv-body {
+            padding: 2rem 2.5rem 2.5rem;
         }
 
-        .cv-skill-tag {
-            background-color: var(--primary-color);
-            color: var(--white);
-            padding: 0.3rem 0.7rem;
-            border-radius: 15px;
-            font-size: 0.85rem;
+        /* ── Section ────────────────────────────────────────── */
+        .cv-section {
+            margin-bottom: 2.2rem;
+        }
+        .cv-section:last-child { margin-bottom: 0; }
+        .cv-section-title {
+            font-size: 0.78rem;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--primary-color);
+            border-bottom: 2px solid #e0e7ff;
+            padding-bottom: 0.4rem;
+            margin-bottom: 1.1rem;
         }
 
-        .back-btn {
-            display: inline-block;
+        /* ── Summary ────────────────────────────────────────── */
+        .cv-summary {
+            color: #374151;
+            line-height: 1.75;
+            font-size: 0.97rem;
+        }
+
+        /* ── Experience entry ───────────────────────────────── */
+        .cv-entry {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 0 1rem;
             margin-bottom: 1.5rem;
-            padding: 0.8rem 1.5rem;
-            background-color: var(--primary-color);
-            color: var(--white);
-            text-decoration: none;
-            border-radius: 5px;
-            transition: all 0.3s ease;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #f3f4f6;
         }
-
-        .back-btn:hover {
-            background-color: var(--secondary-color);
-            transform: translateY(-2px);
+        .cv-entry:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+        .cv-entry-org {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #111827;
         }
-
-        .cv-download {
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-
-        .download-btn {
-            display: inline-block;
-            padding: 0.8rem 2rem;
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            color: var(--white);
-            text-decoration: none;
-            border-radius: 5px;
+        .cv-entry-role {
+            font-size: 0.93rem;
             font-weight: 600;
-            transition: all 0.3s ease;
+            color: var(--primary-color);
+            margin: 0.15rem 0;
+        }
+        .cv-entry-date {
+            font-size: 0.82rem;
+            color: #6b7280;
+            white-space: nowrap;
+            text-align: right;
+            padding-top: 0.1rem;
+        }
+        .cv-entry-loc {
+            font-size: 0.82rem;
+            color: #9ca3af;
+            grid-column: 1 / -1;
+            margin-bottom: 0.5rem;
+        }
+        .cv-entry-bullets {
+            grid-column: 1 / -1;
+            padding-left: 1.2rem;
+            margin: 0;
+            color: #374151;
+            font-size: 0.93rem;
+            line-height: 1.7;
+        }
+        .cv-entry-bullets li { margin-bottom: 0.3rem; }
+
+        /* ── Two-col layout for certs / skills / edu ────────── */
+        .cv-two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.6rem 2rem;
+        }
+        .cv-list-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+            font-size: 0.93rem;
+            color: #374151;
+            line-height: 1.5;
+        }
+        .cv-list-item i {
+            color: var(--primary-color);
+            margin-top: 0.2rem;
+            font-size: 0.8rem;
+            flex-shrink: 0;
         }
 
-        .download-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(99, 102, 241, 0.3);
+        /* ── Skill tags ─────────────────────────────────────── */
+        .cv-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        .cv-tag {
+            background: #eef2ff;
+            color: #4338ca;
+            padding: 0.3rem 0.85rem;
+            border-radius: 20px;
+            font-size: 0.83rem;
+            font-weight: 500;
         }
 
-        @media (max-width: 768px) {
-            .cv-name {
-                font-size: 1.8rem;
-            }
+        /* ── Language row ───────────────────────────────────── */
+        .cv-lang-row {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .cv-lang-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: #f5f3ff;
+            border-radius: 10px;
+            padding: 0.7rem 1.2rem;
+            min-width: 110px;
+            text-align: center;
+        }
+        .cv-lang-name { font-weight: 700; color: #111827; font-size: 0.95rem; }
+        .cv-lang-level { font-size: 0.8rem; color: #6b7280; margin-top: 0.2rem; }
 
-            .cv-contact {
-                gap: 1rem;
-                font-size: 0.85rem;
-            }
+        /* ── Download footer ────────────────────────────────── */
+        .cv-footer-dl {
+            text-align: center;
+            margin-top: 2.5rem;
+            padding-top: 2rem;
+            border-top: 2px solid #e0e7ff;
+        }
 
-            .cv-skills {
-                grid-template-columns: 1fr;
-            }
+        @media (max-width: 640px) {
+            .cv-header { padding: 2rem 1.5rem 1.5rem; }
+            .cv-body { padding: 1.5rem; }
+            .cv-header-name { font-size: 1.7rem; }
+            .cv-two-col { grid-template-columns: 1fr; }
+            .cv-entry { grid-template-columns: 1fr; }
+            .cv-entry-date { text-align: left; }
         }
     </style>
 </head>
@@ -177,133 +243,222 @@
     <!-- Navigation -->
     <nav class="navbar">
         <div class="container">
-            <div class="logo">
-                <h1>AM</h1>
-            </div>
+            <div class="logo"><h1>AL</h1></div>
             <ul class="nav-menu">
                 <li><a href="index.html" class="nav-link">Home</a></li>
                 <li><a href="index.html#about" class="nav-link">About</a></li>
                 <li><a href="index.html#expertise" class="nav-link">Expertise</a></li>
-                <li><a href="index.html#projects" class="nav-link">Projects</a></li>
+                <li><a href="index.html#projects" class="nav-link">Experience</a></li>
                 <li><a href="index.html#hobbies" class="nav-link">Hobbies</a></li>
                 <li><a href="cv.html" class="nav-link active">CV</a></li>
+                <li><a href="job-match.html" class="nav-link">Job Match</a></li>
                 <li><a href="index.html#contact" class="nav-link">Contact</a></li>
             </ul>
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+            <div class="hamburger"><span></span><span></span><span></span></div>
         </div>
     </nav>
 
-    <section class="cv-section" style="padding-top: 8rem; padding-bottom: 3rem;">
-        <div class="cv-container">
-            <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Back to Home</a>
+    <section class="cv-page">
+        <div class="cv-wrap">
 
-            <div class="cv-header">
-                <div class="cv-name" id="cv-name">Angela Li</div>
-                <div class="cv-title" id="cv-title">Security Architect | CISM Certified</div>
-                <div class="cv-contact">
-                    <span><i class="fas fa-phone"></i> +47 90016768</span>
-                    <span><a href="mailto:yan.li.norge@gmail.com"><i class="fas fa-envelope"></i> yan.li.norge@gmail.com</a></span>
-                    <span><i class="fas fa-map-marker-alt"></i> Oslo, Norway</span>
-                    <span><a href="https://linkedin.com/in/angelayanli"><i class="fab fa-linkedin"></i> LinkedIn</a></span>
+            <!-- Action bar -->
+            <div class="cv-actions">
+                <a href="index.html" class="cv-back"><i class="fas fa-arrow-left"></i> Back to Home</a>
+                <a href="CV.pdf" download class="cv-dl"><i class="fas fa-file-pdf"></i> Download PDF</a>
+            </div>
+
+            <!-- CV card -->
+            <div class="cv-card">
+
+                <!-- Header -->
+                <div class="cv-header">
+                    <div class="cv-header-name">Angela Li</div>
+                    <div class="cv-header-title">Security Architect &nbsp;·&nbsp; CISM Certified &nbsp;·&nbsp; Oslo, Norway</div>
+                    <div class="cv-header-contacts">
+                        <span><i class="fas fa-phone"></i> +47 900 16 768</span>
+                        <span><a href="mailto:yan.li.norge@gmail.com"><i class="fas fa-envelope"></i> yan.li.norge@gmail.com</a></span>
+                        <span><a href="https://linkedin.com/in/angelayanli" target="_blank"><i class="fab fa-linkedin"></i> linkedin.com/in/angelayanli</a></span>
+                    </div>
                 </div>
+
+                <!-- Body -->
+                <div class="cv-body">
+
+                    <!-- Summary -->
+                    <div class="cv-section">
+                        <div class="cv-section-title"><i class="fas fa-user"></i>&nbsp; Professional Summary</div>
+                        <p class="cv-summary">
+                            Goal-oriented, solution-driven, and collaborative Security Architect with over 15 years of experience in cybersecurity and enterprise security architecture. Dedicated to safeguarding organisations against the evolving landscape of digital threats through robust security frameworks and advanced security solutions. Experienced in designing and governing enterprise security architecture, building security control frameworks, leading Secure SDLC initiatives, and providing security architect support across a wide range of projects and programmes. CISM-certified with deep knowledge of ISO 27001, NIST CSF, DORA, and GDPR in regulated financial environments.
+                        </p>
+                    </div>
+
+                    <!-- Core Competencies -->
+                    <div class="cv-section">
+                        <div class="cv-section-title"><i class="fas fa-star"></i>&nbsp; Core Competencies</div>
+                        <div class="cv-tags">
+                            <span class="cv-tag">Enterprise Security Architecture</span>
+                            <span class="cv-tag">Security Governance & Frameworks</span>
+                            <span class="cv-tag">Cybersecurity Strategy & Policy</span>
+                            <span class="cv-tag">Secure SDLC & DevSecOps</span>
+                            <span class="cv-tag">Application Security</span>
+                            <span class="cv-tag">Cloud Security (Azure & AWS)</span>
+                            <span class="cv-tag">Risk Assessment & Management</span>
+                            <span class="cv-tag">Compliance (ISO 27001 / NIST / DORA / GDPR)</span>
+                            <span class="cv-tag">Zero Trust Architecture</span>
+                            <span class="cv-tag">Security Posture Management</span>
+                            <span class="cv-tag">AI Security</span>
+                            <span class="cv-tag">Information Security Governance</span>
+                            <span class="cv-tag">Security Architecture in Projects & Programmes</span>
+                        </div>
+                    </div>
+
+                    <!-- Experience -->
+                    <div class="cv-section">
+                        <div class="cv-section-title"><i class="fas fa-briefcase"></i>&nbsp; Professional Experience</div>
+
+                        <!-- DNB block -->
+                        <div class="cv-entry">
+                            <div>
+                                <div class="cv-entry-org">DNB</div>
+                            </div>
+                            <div class="cv-entry-date">9 years &nbsp;·&nbsp; Oslo, Norway</div>
+                        </div>
+
+                        <div class="cv-entry">
+                            <div>
+                                <div class="cv-entry-role">Enterprise Security Architect — Protective Security Services</div>
+                            </div>
+                            <div class="cv-entry-date">Feb 2023 – Present</div>
+                            <ul class="cv-entry-bullets">
+                                <li>Developed and implemented a Secure SDLC and Application Security strategy, enhancing the overall security posture.</li>
+                                <li>Established an Application Security maturity model and benchmark, driving continuous improvement initiatives.</li>
+                                <li>Involved in vulnerability management efforts within the secure SDLC, significantly reducing security risks.</li>
+                                <li>Spearheaded Application Security Posture Management projects, resulting in a more resilient application environment.</li>
+                            </ul>
+                        </div>
+
+                        <div class="cv-entry">
+                            <div>
+                                <div class="cv-entry-role">Enterprise Security Architect — Security Governance & Architecture</div>
+                            </div>
+                            <div class="cv-entry-date">Sep 2020 – Jan 2023</div>
+                            <ul class="cv-entry-bullets">
+                                <li>Led the development of a comprehensive security control framework, ensuring alignment with organisational security requirements.</li>
+                                <li>Collaborated closely with domain security architects to build an enterprise security architecture framework.</li>
+                                <li>Acted as the security architect representative in the IT Architecture Board, enhancing cross-departmental security integration.</li>
+                                <li>Implemented security architecture processes within the SDLC, improving application security and vulnerability management.</li>
+                            </ul>
+                        </div>
+
+                        <div class="cv-entry">
+                            <div>
+                                <div class="cv-entry-role">Security Architect — Project & Programme Support</div>
+                            </div>
+                            <div class="cv-entry-date">Jun 2017 – Aug 2020</div>
+                            <ul class="cv-entry-bullets">
+                                <li>Provided security architecture support across a wide range of projects and programmes throughout the delivery lifecycle.</li>
+                                <li>Application security and Secure Development Life Cycle (SDLC), DevSecOps guidance.</li>
+                                <li>Developed and maintained security architecture framework and processes.</li>
+                                <li>Security architect representative in the IT Architecture Board.</li>
+                                <li>Security governance, requirements definition, and support for security risk analysis.</li>
+                            </ul>
+                        </div>
+
+                        <!-- SINTEF -->
+                        <div class="cv-entry">
+                            <div>
+                                <div class="cv-entry-org">SINTEF</div>
+                                <div class="cv-entry-role">Information Security Risk Advisor / Research Fellow</div>
+                            </div>
+                            <div class="cv-entry-date">Aug 2011 – May 2017 &nbsp;·&nbsp; Oslo</div>
+                            <ul class="cv-entry-bullets">
+                                <li>Developed methodologies for security risk analysis and security testing.</li>
+                                <li>Produced an industry guideline for a cost-efficient security management approach.</li>
+                                <li>Contributed to enterprise security architecture framework development.</li>
+                                <li>Architecture and design for IT systems; security risk analysis for banking systems.</li>
+                                <li>Security risk analysis methods evaluation and research.</li>
+                            </ul>
+                        </div>
+
+                        <!-- EVRY -->
+                        <div class="cv-entry">
+                            <div>
+                                <div class="cv-entry-org">EVRY Norge</div>
+                                <div class="cv-entry-role">Security Consultant</div>
+                            </div>
+                            <div class="cv-entry-date">Jan 2015 – Jul 2015 &nbsp;·&nbsp; Oslo</div>
+                            <ul class="cv-entry-bullets">
+                                <li>Security risk analysis and testing for a web application of an online banking system.</li>
+                                <li>Security requirements engineering.</li>
+                                <li>Developed a systematic architectural security management framework integrating security requirements, technical architecture, enterprise architecture, security risks, and testing.</li>
+                            </ul>
+                        </div>
+
+                    </div>
+
+                    <!-- Education -->
+                    <div class="cv-section">
+                        <div class="cv-section-title"><i class="fas fa-graduation-cap"></i>&nbsp; Education</div>
+                        <div class="cv-two-col">
+                            <div class="cv-list-item">
+                                <i class="fas fa-circle-dot"></i>
+                                <div>
+                                    <strong>Master's — Information and Telecommunications Technology</strong><br>
+                                    <span style="color:#6b7280;font-size:0.88rem;">University of Agder (UiA) &nbsp;·&nbsp; 2009 – 2011</span>
+                                </div>
+                            </div>
+                            <div class="cv-list-item">
+                                <i class="fas fa-circle-dot"></i>
+                                <div>
+                                    <strong>Bachelor's — Information Engineering</strong><br>
+                                    <span style="color:#6b7280;font-size:0.88rem;">Beijing University of Post and Telecommunications &nbsp;·&nbsp; 2005 – 2009</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Certifications -->
+                    <div class="cv-section">
+                        <div class="cv-section-title"><i class="fas fa-certificate"></i>&nbsp; Certifications</div>
+                        <div class="cv-two-col">
+                            <div class="cv-list-item"><i class="fas fa-check-circle"></i> CISM — Certified Information Security Manager (ISACA)</div>
+                            <div class="cv-list-item"><i class="fas fa-check-circle"></i> ISO/IEC 27001 Lead Implementer</div>
+                            <div class="cv-list-item"><i class="fas fa-check-circle"></i> NIST Cyber Security Professional (NCSP) — Practitioner</div>
+                            <div class="cv-list-item"><i class="fas fa-check-circle"></i> ITIL Foundation (AXELOS)</div>
+                            <div class="cv-list-item"><i class="fas fa-check-circle"></i> ISTQB Certified Tester</div>
+                        </div>
+                    </div>
+
+                    <!-- Languages -->
+                    <div class="cv-section">
+                        <div class="cv-section-title"><i class="fas fa-language"></i>&nbsp; Languages</div>
+                        <div class="cv-lang-row">
+                            <div class="cv-lang-item">
+                                <div class="cv-lang-name">Norwegian</div>
+                                <div class="cv-lang-level">Full Professional</div>
+                            </div>
+                            <div class="cv-lang-item">
+                                <div class="cv-lang-name">English</div>
+                                <div class="cv-lang-level">Full Professional</div>
+                            </div>
+                            <div class="cv-lang-item">
+                                <div class="cv-lang-name">Chinese</div>
+                                <div class="cv-lang-level">Native</div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div><!-- /cv-body -->
+            </div><!-- /cv-card -->
+
+            <!-- Download footer -->
+            <div class="cv-footer-dl">
+                <a href="CV.pdf" download class="cv-dl"><i class="fas fa-file-pdf"></i> Download Full CV (PDF)</a>
             </div>
 
-            <div id="cv-content" class="cv-content">
-                <p style="text-align: center; color: var(--text-color);">Loading CV content...</p>
-            </div>
-
-            <div class="cv-download" style="margin-top: 3rem; border-top: 2px solid var(--primary-color); padding-top: 2rem;">
-                <a href="CV.pdf" download class="download-btn">
-                    <i class="fas fa-download"></i> Download Full CV (PDF)
-                </a>
-            </div>
-        </div>
+        </div><!-- /cv-wrap -->
     </section>
 
-    <script>
-        // Load CV content from JSON
-        async function loadCVContent() {
-            try {
-                const response = await fetch('cv_data.json');
-                const data = await response.json();
-                const content = data.content;
-
-                // Parse and format the CV content
-                const cvContent = document.getElementById('cv-content');
-                const lines = content.split('\n').filter(line => line.trim());
-
-                let html = '';
-                let currentSection = '';
-
-                const sections = {
-                    'Summary': ['Summary', 'SUMMARY'],
-                    'Top Skills': ['Top Skills', 'SKILLS', 'Skills'],
-                    'Experience': ['Experience', 'EXPERIENCE', 'Professional Experience'],
-                    'Education': ['Education', 'EDUCATION'],
-                    'Certifications': ['Certifications', 'CERTIFICATIONS', 'Certification'],
-                    'Languages': ['Languages', 'LANGUAGES'],
-                };
-
-                for (let i = 0; i < lines.length; i++) {
-                    const line = lines[i].trim();
-
-                    // Check if this is a section header
-                    let isSection = false;
-                    for (const [sectionName, keywords] of Object.entries(sections)) {
-                        if (keywords.some(kw => line.includes(kw))) {
-                            currentSection = sectionName;
-                            html += `<div class="cv-section">
-                                    <div class="cv-section-title"><i class="fas fa-chevron-right"></i> ${sectionName}</div>
-                                    <div class="cv-section-content">`;
-                            isSection = true;
-                            break;
-                        }
-                    }
-
-                    if (isSection) continue;
-
-                    // Add content to sections
-                    if (currentSection && line && !line.startsWith('Certified') && !line.startsWith('www.')) {
-                        if (line.match(/^\d{4}|^[A-Z]/)) {
-                            html += `<div class="cv-entry">
-                                    <div class="cv-entry-title">${line}</div>`;
-                        } else if (line.match(/[A-Z][A-Z]|Manager|Architect|Engineer|Developer/)) {
-                            html += `<div class="cv-entry-subtitle">${line}</div>`;
-                        } else {
-                            html += `<div class="cv-entry-description">${line}</div>
-                                    </div>`;
-                        }
-                    }
-                }
-
-                html += '</div></div>';
-                cvContent.innerHTML = html || '<p>CV content loaded. Please view the full PDF for complete details.</p>';
-            } catch (error) {
-                console.error('Error loading CV:', error);
-                document.getElementById('cv-content').innerHTML = `
-                    <div style="text-align: center; padding: 2rem;">
-                        <p style="color: var(--text-color);">CV content not available. Please <a href="CV.pdf" download style="color: var(--primary-color); font-weight: 600;">download the PDF</a> to view the full CV.</p>
-                    </div>
-                `;
-            }
-        }
-
-        // Load CV when page loads
-        document.addEventListener('DOMContentLoaded', loadCVContent);
-
-        // Mobile menu toggle
-        const hamburger = document.querySelector('.hamburger');
-        const navMenu = document.querySelector('.nav-menu');
-
-        if (hamburger) {
-            hamburger.addEventListener('click', () => {
-                navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
-            });
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
